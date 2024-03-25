@@ -13,61 +13,162 @@
             <header>
                     <div class="hd-properties flex flex-d-column items-end">
                         <div class="flex hd-inside">
-                            <div class="bar">
-
+                            <div class="bar other-bars">
+                                <a href="home.html">
+                                    <i class="fa-solid fa-house"></i>
+                                </a>
                             </div>
-                            <div class="bar">
-
+                            <div class="bar other-bars">
+                                <a href="user.html">
+                                    <i class="fa-solid fa-user"></i>
+                                </a>
                             </div>
-                            <div class="bar">
-
+                            <div class="bar navbar">
+                                <i class="fas fa-bars"></i>
                             </div>
-                            <div class="bar">
-
-                            </div>
-                            <div class="bar">
-
-                            </div>
+                        </div>
+                        <div class="navbar-box">
+                                <div class="navbar-box-items">
+                                    <a href="profile.html">Settings</a>
+                                </div>
+                                <div class="navbar-box-items">
+                                    <a href="login.html">Log Out</a>
+                                </div>
                         </div>
                     </div>
             </header>
             <main>
                 <div class="main-properties flex flex-d-column items-center justify-center">
-                   <div class="page-center">
-                       <div class="flex flex-d-column items-center justify-center">
-                       <div class="avatar">
+                    <div class="page-center">
+                        <div class="flex flex-d-column items-center justify-center">
+                           <div class="avatar">
 
-                       </div>
-                       <div class="mv-5">
-                           Kardelen Colleged
-                       </div>
-                       <div class="mv-5">
-                           <a href="">@kcolleged</a>
-                       </div>
-                       <div class="mv-5">
-                           bio
-                       </div>
-                       <div class="mv-5">
-                           2 Answers
-                           .
-                           Joined Mar 2024
-                       </div>
-                   </div>
-                    <div class="links-wrapper">
-                        <ul>
-                            <li class="links h-40 mv-10">link1</li>
-                            <li class="links h-40 mv-10">link2</li>
-                        </ul>
-                    </div>
-                    <div class="flex">
-                        <div class="link-settings-wrapper mv-25 h-40 w-100p flex items-center justify-center">
-                            <div class="setting-1 link-settings flex w-100p">Add New Link</div>
-                            <div class="setting-2 link-settings flex w-100p"> Setting</div>
+                           </div>
+                           <div class="mv-5">
+                               Kardelen Colleged
+                           </div>
+                           <div class="mv-5">
+                               <a href="">@kcolleged</a>
+                           </div>
+                           <div class="mv-5">
+                               bio
+                           </div>
+                           <div class="mv-5">
+                               Joined Mar 2024
+                           </div>
+                        </div>
+                        <div class="links-wrapper">
+                            <ul>
+                                <li class="links center-text-items h-40 mv-10">link1</li>
+                                <li class="links center-text-items h-40 mv-10">link2</li>
+                            </ul>
+                        </div>
+                        <div class="flex">
+                            <div class="link-settings-wrapper mv-25 h-40 w-100p flex items-center justify-center">
+                                <div class="setting-1 center-text-items link-settings flex w-100p">Add New Link</div>
+                                <div class="setting-2 center-text-items link-settings flex w-100p"> Setting</div>
+                            </div>
+                        </div>
+                        <div class="userpage-settings items-center justify-center w-100p">
+                            <div class="setting-new-link">
+                                <form id="form-new-link" action="">
+                                    <div class="pv-16">
+                                        <label for="description">Description</label>
+                                        <div class="p-16">
+                                             <input id="description" type="text" class="inputtext inputboxes w-100p">
+                                        </div>
+                                    </div>
+                                     <div class="pv-16">
+                                        <label for="url">URL</label>
+                                         <div class="p-16 mt-5">
+                                             <input id="url" type="text" class="inputtext inputboxes w-100p">
+                                         </div>
+                                    </div>
+                                    <div class="pv-16 flex items-center gap-5">
+                                        <div class="">
+                                            <button type="submit" class="sendbutton">Save</button>
+                                        </div>
+                                        <div class="">
+                                            <div class="cancel-button">Cancel</div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="setting-userpage">
+                                <form id="form-userpage" action="">
+                                    <div class="border-radius-setting pv-16">
+                                        <div>
+                                            <h2>
+                                                Link Shape
+                                            </h2>
+                                            <span>
+                                                In what shape do you want to present your links?
+                                            </span>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="square" name="border-radius-rate" value="Square">
+                                            <label for="square">Square</label>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="round" name="border-radius-rate" value="Round">
+                                            <label for="round">Round</label>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="extra-round" name="border-radius-rate" value="Extra Round">
+                                            <label for="extra-round">Extra Round</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="bg-color-setting pv-16">
+                                        <div>
+                                            <h2>
+                                                Link Color
+                                            </h2>
+                                            <span>
+                                                What color are you choosing for your links?
+                                            </span>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="b-r-s-1" name="bg-color-set" value="b-r-s-1">
+                                            <label for="b-r-s-1">b-r-s-1</label>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="b-r-s-2" name="bg-color-set" value="b-r-s-2">
+                                            <label for="b-r-s-2">b-r-s-2</label>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="b-r-s-3" name="bg-color-set" value="b-r-s-3">
+                                            <label for="b-r-s-3">b-r-s-3</label>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="b-r-s-4" name="bg-color-set" value="b-r-s-4">
+                                            <label for="b-r-s-4">b-r-s-4</label>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="b-r-s-5" name="bg-color-set" value="b-r-s-5">
+                                            <label for="b-r-s-5">b-r-s-5</label>
+                                        </div>
+                                        <div class="pv-16">
+                                            <input type="radio" id="b-r-s-6" name="bg-color-set" value="b-r-s-6">
+                                            <label for="b-r-s-6">b-r-s-6</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="pv-16 flex items-center gap-5">
+                                        <div class="">
+                                            <button type="submit" class="sendbutton">Save</button>
+                                        </div>
+                                        <div class="">
+                                            <div class="cancel-button">Cancel</div>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
                         </div>
                     </div>
-
-
-                   </div>
 
                 </div>
             </main>
