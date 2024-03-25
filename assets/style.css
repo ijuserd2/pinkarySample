@@ -119,6 +119,7 @@
 }
 .center-wrapper{
     width:450px;
+    box-sizing:border-box;
     margin:16px;
     padding:16px;
 }
@@ -258,6 +259,9 @@ a{
 }
 .page-center{
     width:450px;
+    box-sizing:border-box;
+    margin:16px;
+    padding:16px;
     color:white;
 }
 .link-settings-wrapper{
