@@ -36,6 +36,31 @@
     display:block;
     width:100%;
 }
+.settings-userpage{
+    display:block;
+    height:inherit;
+}
+.class-b-s-r-1{
+    background:linear-gradient(to right,red,blue);
+}
+.class-b-s-r-2{
+    background:linear-gradient(to right,yellow,green);
+}
+.class-b-s-r-3{
+    background:linear-gradient(to right,orange,blue);
+}
+.class-b-s-r-4{
+    background:linear-gradient(to right,green,blue);
+}
+.class-b-s-r-5{
+    background:linear-gradient(to right,red,orange);
+}
+.class-b-s-r-6{
+    background:linear-gradient(to right,purple,blue);
+}
+.inputradio{
+    flex-basis:10%
+}
 .navbar-box{
     width:100px;
     position:absolute;
@@ -204,6 +229,7 @@ a{
     border:1px solid rgb(236, 72, 153);
     border-radius:5px;
 }
+
 #change-pw{
 
 }
@@ -220,8 +246,9 @@ a{
 .links{
     display:flex;
     width:100%;
-    border-radius:10px;
-    background-color:rgb(239,68,68);
+}
+.page-bg-color{
+    background:linear-gradient(to right,red,blue);
 }
 .links-wrapper{
 
@@ -245,13 +272,22 @@ a{
 .h-40{
     height:40px;
 }
-.link-settings{
+.page-b-radius{
     border-radius:10px;
 }
 .center-text-items{
     display:flex;
     align-items:center;
     justify-content:center;
+}
+.class-extra-round{
+    border-radius:50px;
+}
+.class-round{
+    border-radius:10px;
+}
+.class-square{
+    border-radius:0;
 }
 .cancel-button{
     display:flex;
@@ -283,9 +319,11 @@ a{
 
 
 
-
-@media screen and (max-width:460px){
+@media all and (max-width:460px){
     .center-wrapper{
+        width:100%;
+    }
+    .page-center{
         width:100%;
     }
 }
