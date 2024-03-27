@@ -27,11 +27,9 @@ function checkValidity(){
 }
 
 
-registerForm.addEventListener("change", () => {
-    if(!checkValidity()){
-        registerForm.disable=true;
-    }else{
-        registerForm.disable=false;
+sendButton.addEventListener("click", () => {
+    if(checkValidity()){
+        registerForm.submit()
     }
 });
 

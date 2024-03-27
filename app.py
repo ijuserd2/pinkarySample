@@ -27,7 +27,7 @@ def register():
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("pwd")
-        #dbsql.sign_up(full_name,username,email,password)
+        dbsql.sign_up(full_name,username,email,password)
 
         return redirect(url_for('home'))
 

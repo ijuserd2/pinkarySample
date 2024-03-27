@@ -24,6 +24,6 @@ def fetch_user_pass(email):
     dbpass = cursor.fetchall()[0][0]
     return dbpass
 #sign_up('john','doe','johndoe2@email.com','2468john')
-print_users()
+#print_users()
 #print(fetch_user_pass('johndoe2@email.com'))
 
