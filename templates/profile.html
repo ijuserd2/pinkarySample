@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Profile</title>
 </head>
@@ -14,12 +14,12 @@
                     <div class="hd-properties flex flex-d-column items-end">
                         <div class="flex hd-inside">
                             <div class="bar other-bars">
-                                <a href="home.html">
+                                <a href="{{ url_for('home')}}">
                                     <i class="fa-solid fa-house"></i>
                                 </a>
                             </div>
                             <div class="bar other-bars">
-                                <a href="user.html">
+                                <a href="{{ url_for('user')}}">
                                     <i class="fa-solid fa-user"></i>
                                 </a>
                             </div>
@@ -29,10 +29,10 @@
                         </div>
                         <div class="navbar-box">
                                 <div class="navbar-box-items">
-                                    <a href="profile.html">Settings</a>
+                                    <a href="{{ url_for('profile')}}">Settings</a>
                                 </div>
                                 <div class="navbar-box-items">
-                                    <a href="login.html">Log Out</a>
+                                    <a href="{{ url_for('login')}}">Log Out</a>
                                 </div>
                         </div>
                     </div>
@@ -149,6 +149,6 @@
 
     </div>
 
-    <script src="assets/script.js"></script>
+    <script src="{{ url_for('static',filename='script.js')}}"></script>
 </body>
 </html>

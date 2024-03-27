@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Register</title>
 </head>
@@ -20,13 +20,13 @@
                         <div>
                             <div class="navbar-box">
                                 <div class="navbar-box-items">
-                                    <a href="index.html">About</a>
+                                    <a href="{{ url_for('index')}}">About</a>
                                 </div>
                                 <div class="navbar-box-items">
-                                    <a href="login.html">Log In</a>
+                                    <a href="{{ url_for('login')}}">Log In</a>
                                 </div>
                                 <div class="navbar-box-items">
-                                    <a href="register.html">Sign Up</a>
+                                    <a href="{{ url_for('register')}}">Sign Up</a>
                                 </div>
                             </div>
                         </div>
@@ -36,32 +36,32 @@
                 <div class="main-properties flex flex-d-column items-center justify-center">
                     <div class="center-wrapper">
                         <div class="form">
-                            <form action="">
+                            <form id="registerform" method="post">
                                 <div class="pv-16">
                                     <label for="name">Name</label>
                                     <div class="p-16">
-                                         <input id="name" type="text" class="inputtext inputboxes w-100p">
+                                         <input id="name" name="fullname" type="text" class="inputtext inputboxes w-100p">
                                     </div>
 
                                 </div>
                                 <div class="pv-16">
                                     <label for="username">Username</label>
                                     <div class="p-16">
-                                         <input id="username" type="text" class="inputtext inputboxes w-100p">
+                                         <input id="username" name="username" type="text" class="inputtext inputboxes w-100p">
                                     </div>
 
                                 </div>
                                 <div class="pv-16">
                                     <label for="email">Email</label>
                                     <div class="p-16">
-                                         <input id="email" type="text" class="inputtext inputboxes w-100p">
+                                         <input id="email" name="email" type="text" class="inputtext inputboxes w-100p">
                                     </div>
 
                                 </div>
                                  <div class="pv-16">
                                     <label for="pw">Password</label>
                                      <div class="p-16 mt-5">
-                                         <input id="pw" type="password" class="inputtext inputboxes w-100p">
+                                         <input id="pw" name="pwd" type="password" class="inputtext inputboxes w-100p">
                                      </div>
                                 </div>
                                 <div class="pv-16">
@@ -72,9 +72,9 @@
                                 </div>
                                 <div class="pv-16 mv-10 flex items-center justify-end">
 
-                                    <a href="login.html">Already have an account? Sign in here.</a>
+                                    <a href="{{ url_for('login')}}">Already have an account? Sign in here.</a>
 
-                                    <button type="submit" class="send">Register</button>
+                                    <button id="sendbutton" type="submit" class="send">Register</button>
                                 </div>
 
                             </form>
@@ -97,6 +97,6 @@
 
     </div>
 
-    <script src="assets/script.js"></script>
+    <script src="{{ url_for('static',filename='scriptregister.js')}}"></script>
 </body>
 </html>
