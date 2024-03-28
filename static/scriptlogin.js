@@ -2,6 +2,8 @@ const navbar = document.getElementsByClassName("navbar")[0];
 const navbarBox = document.getElementsByClassName("navbar-box")[0];
 const emailBox = document.getElementById("email");
 const passwordBox = document.getElementById("pw");
+const registerForm = document.getElementById("formlogin");
+const sendButton = document.getElementById("sendbutton");
 
 const warningText = document.createElement("p");
 const node = document.createTextNode("Invalid email address");
@@ -10,11 +12,23 @@ warningText.style.color="red", warningText.style.padding="5px 0";
 
 
 let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-var isEmailValid = false, isNameValid=false, isUserNameValid = false, isPwValid = false, isCPwValid= false;
+var isEmailValid = false, isPwValid = false;
 
+function checkValidity(){
+    if(isEmailValid && isPwValid){
+        return true;
+    }
+    return false;
+}
+
+sendButton.addEventListener("click", () => {
+    if(checkValidity()){
+        registerForm.submit()
+    }
+});
 emailBox.addEventListener("blur", function () {
   if (emailBox.value.match(validRegex)) {
-   	  emailBox.style.borderColor="rgba(0,0,0,0.2)";
+   	  emailBox.style.borderColor="green";
    	  isEmailValid = true;
   } else {
       emailBox.style.borderColor="red";

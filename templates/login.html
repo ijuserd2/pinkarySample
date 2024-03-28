@@ -36,18 +36,18 @@
                 <div class="main-properties flex flex-d-column items-center justify-center">
                     <div class="center-wrapper">
                         <div class="form">
-                            <form id="formlogin" action="">
+                            <form id="formlogin" method="post" action="">
                                 <div class="pv-16">
                                     <label for="email">Email</label>
                                     <div class="p-16">
-                                         <input id="email" type="text" class="inputtext inputboxes w-100p">
+                                         <input id="email" name="email" type="text" class="inputtext inputboxes w-100p">
                                     </div>
 
                                 </div>
                                  <div class="pv-16">
                                     <label for="pw">Password</label>
                                      <div class="p-16 mt-5">
-                                         <input id="pw" type="password" class="inputtext inputboxes w-100p">
+                                         <input id="pw" name="pwd" type="password" class="inputtext inputboxes w-100p">
                                      </div>
                                 </div>
                                 <div class="pv-16 flex">
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="pv-16 mv-10 flex items-center justify-end">
                                     <a href="">Forgot your password?</a>
-                                    <button type="submit" class="send">Log In</button>
+                                    <button id="sendbutton" type="button" class="send">Log In</button>
                                 </div>
 
                             </form>

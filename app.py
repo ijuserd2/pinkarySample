@@ -15,7 +15,16 @@ def home():
 
 @app.route('/login/', methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    if request.method == "GET":
+        return render_template('login.html')
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("pwd")
+        check = dbsql.email_pass_check(email, password)
+        if(check!=None):
+            hello_user = "Hello" + dbsql.fetch_user_fullname(email, password)+"!"
+            return redirect(url_for('home',hello_user="hello_user"))
+        return redirect(url_for('login'))
 
 @app.route('/register/', methods=['GET','POST'])
 def register():

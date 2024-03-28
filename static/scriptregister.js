@@ -36,7 +36,7 @@ sendButton.addEventListener("click", () => {
 
 emailBox.addEventListener("blur", function () {
   if (emailBox.value.match(validRegex)) {
-   	  emailBox.style.borderColor="rgba(0,0,0,0.2)";
+   	  emailBox.style.borderColor="green";
    	  isEmailValid = true;
   } else {
       emailBox.style.borderColor="red";
