@@ -42,7 +42,15 @@ def register():
 
 @app.route('/user/', methods=['GET','POST'])
 def user():
-    return render_template('user.html')
+    if request.method == "GET":
+        settingsvalues = dbsql.fetch_test_user_pagesettings()
+        return render_template('user.html', bgcolor = settingsvalues[0], borderradius = settingsvalues[1])
+    if request.method == "POST":
+        if (request.form["page-settings"] == "bgcolor-borderradius"):
+            
+
+        settingsvalues = dbsql.fetch_test_user_pagesettings()
+        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1])
 
 @app.route('/profile/', methods=['GET','POST'])
 def profile():

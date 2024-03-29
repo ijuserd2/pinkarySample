@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>User</title>
 </head>
+<style>
+    .page-bg-color{
+    background:{{bgcolor}};
+    }
+    .page-b-radius{
+    border-radius:{{borderradius}};
+    }
+</style>
 <body class="body-bg-color font">
     <div id="wrapper" class="flex flex-d-column min-h-s">
         <div class="contenttop">
@@ -86,7 +94,7 @@
                                     </div>
                                     <div class="pv-16 flex items-center gap-5">
                                         <div class="">
-                                            <button type="submit" class="sendbutton">Save</button>
+                                            <button type="button" class="sendbutton">Save</button>
                                         </div>
                                         <div class="">
                                             <div class="cancel-button">Cancel</div>
@@ -95,7 +103,8 @@
                                 </form>
                             </div>
                             <div class="setting-userpage">
-                                <form id="form-userpage" action="">
+                                <form id="form-userpage" method="post" action="">
+                                    <input type="hidden" name="page-settings" value="bgcolor-borderradius">
                                     <div class="border-radius-setting pv-16">
                                         <div>
                                             <h2>
