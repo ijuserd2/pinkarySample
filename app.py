@@ -47,7 +47,6 @@ def user():
         return render_template('user.html', bgcolor = settingsvalues[0], borderradius = settingsvalues[1])
     if request.method == "POST":
         if (request.form["page-settings"] == "bgcolor-borderradius"):
-            
 
         settingsvalues = dbsql.fetch_test_user_pagesettings()
         return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1])
