@@ -46,35 +46,36 @@
                                 <div class="mv-5">Update your account's profile information and email address.</div>
                             </div>
                             <div class="form">
-                                <form action="">
+                                <form id="update_account_form" method="post" action="">
+                                    <input type="hidden" name="update_acc" value="acc">
                                     <div class="pv-16">
                                         <label for="name">Name</label>
                                         <div class="p-16">
-                                             <input id="name" type="text" class="inputtext inputboxes w-100p">
+                                             <input id="name" name="fullname" type="text" class="inputtext inputboxes w-100p">
                                         </div>
 
                                     </div>
                                     <div class="pv-16">
                                         <label for="username">Username</label>
                                         <div class="p-16">
-                                             <input id="username" type="text" class="inputtext inputboxes w-100p">
+                                             <input id="username" name="username" type="text" class="inputtext inputboxes w-100p">
                                         </div>
 
                                     </div>
                                     <div class="pv-16">
                                         <label for="email">Email</label>
                                         <div class="p-16">
-                                             <input id="email" type="text" class="inputtext inputboxes w-100p">
+                                             <input id="email" name="email" type="text" class="inputtext inputboxes w-100p">
                                         </div>
                                     </div>
                                    <div class="pv-16">
                                         <label for="bio">Bio</label>
                                         <div class="p-16">
-                                             <input id="bio" type="text" class="inputtext inputboxes w-100p">
+                                             <input id="bio" name="bio" type="text" class="inputtext inputboxes w-100p">
                                         </div>
                                     </div>
                                     <div class="pv-16 mv-5 flex">
-                                        <button id="save-acc" class="settings-buttons" type="submit">Save</button>
+                                        <button id="save-acc" class="settings-buttons" type="button">Save</button>
                                     </div>
 
                                 </form>
@@ -88,28 +89,29 @@
                                 <div class="mv-5">Ensure your account is using a long, random password to stay secure.</div>
                             </div>
                             <div>
-                                <form action="">
+                                <form id="update_pwd" method="post" action="">
+                                    <input type="hidden" name="update_acc" value="pwd">
                                     <div class="pv-16">
                                             <label for="old_pw">Password</label>
                                              <div class="p-16 mt-5">
-                                                 <input id="old_pw" type="password" class="inputtext inputboxes w-100p">
+                                                 <input id="old_pw" name="old_pwd" type="password" class="inputtext inputboxes w-100p">
                                              </div>
                                     </div>
 
                                     <div class="pv-16">
                                             <label for="new_pw">Password</label>
                                              <div class="p-16 mt-5">
-                                                 <input id="new_pw" type="password" class="inputtext inputboxes w-100p">
+                                                 <input id="new_pw" name="new_pwd" type="password" class="inputtext inputboxes w-100p">
                                              </div>
                                     </div>
                                     <div class="pv-16">
                                             <label for="c_new_pw">Confirm Password</label>
                                              <div class="p-16 mt-5">
-                                                 <input id="c_new_pw" type="password" class="inputtext inputboxes w-100p">
+                                                 <input id="c_new_pw" name="c_new_pwd" type="password" class="inputtext inputboxes w-100p">
                                              </div>
                                     </div>
                                     <div class="pv-16 mv-5 flex">
-                                        <button id="change-pw" class="settings-buttons" type="submit">Save</button>
+                                        <button id="change-pw" class="settings-buttons" type="button">Save</button>
                                     </div>
 
                                 </form>
@@ -121,9 +123,9 @@
                                         <div class="light-gray-color"><h2>Delete Account</h2></div>
                                     </div>
                                     <div class="mv-5">Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.</div>
-                                    <form action="">
+                                    <form id="delete_account_form" method="post" action="">
                                         <div class="pv-16 mv-5 flex">
-                                            <button id="delete-acc" class="settings-buttons" type="submit">Delete</button>
+                                            <button id="delete-acc" class="settings-buttons" type="button">Delete</button>
                                         </div>
                                     </form>
                                 </div>
@@ -149,6 +151,6 @@
 
     </div>
 
-    <script src="{{ url_for('static',filename='script.js')}}"></script>
+    <script src="{{ url_for('static',filename='scriptprofile.js')}}"></script>
 </body>
 </html>

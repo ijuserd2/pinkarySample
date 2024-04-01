@@ -25,6 +25,11 @@ def fetch_user_pass(email):
     cursor.execute(fetch_user_pass_sql)
     dbpass = cursor.fetchall()[0][0]
     return dbpass
+def fetch_user_pass_by_id():
+    fetch_user_pass_sql = "SELECT Pass FROM Users WHERE UserId = 11 "
+    cursor.execute(fetch_user_pass_sql)
+    dbpass = cursor.fetchall()[0][0]
+    return dbpass
 def fetch_user_fullname(email, pwd):
     fetch_user_pass_sql = "SELECT FullName FROM Users WHERE Email = '"+email+"' AND Pass ='"+pwd+"' COLLATE Latin1_General_CS_AS"
     cursor.execute(fetch_user_pass_sql)
@@ -54,6 +59,28 @@ def set_test_links(desc, link):
     cursor.execute(set_sql)
     cursor.commit()
 
+def update_test_user_acc(name, username, email, bio):
+    update_sql = "UPDATE Users SET FullName = '" + name + "', UserName = '" + username + "', Email = '" + email + "', Bio = '" + bio + "', DataModified = GETDATE() WHERE UserId = 11"
+    cursor.execute(update_sql)
+    cursor.commit()
+
+def update_test_user_pass(old_pwd, new_pwd, c_new_pwd):
+    old_pwd_fetched = fetch_user_pass_by_id()
+    if(old_pwd != old_pwd_fetched):
+        print("old pwd wrong")
+        return False
+    if(new_pwd != c_new_pwd):
+        print("new_pwd not same with confirm_new_pw")
+        return False
+    if (old_pwd == new_pwd):
+        print("old pwd same with new pwd")
+        return False
+    update_sql = "UPDATE Users SET Pass = '" + new_pwd + "', DataModified = GETDATE() WHERE UserId = 11"
+    cursor.execute(update_sql)
+    cursor.commit()
+
+
+#update_test_user_pass("123456newe", "123456newx", "123456newx")
 #set_test_links("descr3","www.tumblr.com")
 #fetch_test_user_pagesettings()
 #set_test_user_pagesettings("to right,red,blue","0")

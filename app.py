@@ -73,8 +73,25 @@ def user():
 
 @app.route('/profile/', methods=['GET','POST'])
 def profile():
-    return render_template('profile.html')
+    if request.method == "GET":
+        return render_template('profile.html')
+    if request.method == "POST":
+        if (request.form["update_acc"] == "acc"):
+            name = request.form.get("fullname")
+            username = request.form.get("username")
+            email = request.form.get("email")
+            bio = request.form.get("bio")
+            dbsql.update_test_user_acc(name, username, email, bio)
 
+            return render_template('profile.html')
+        if (request.form["update_acc"] == "pwd"):
+            old_pwd = request.form.get("old_pwd")
+            new_pwd = request.form.get("new_pwd")
+            c_new_pwd = request.form.get("c_new_pwd")
+            dbsql.update_test_user_pass(old_pwd, new_pwd, c_new_pwd)
+            return render_template('profile.html')
+
+        return render_template('profile.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
