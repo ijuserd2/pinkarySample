@@ -67,8 +67,10 @@
                         </div>
                         <div class="links-wrapper">
                             <ul>
-                                <li class="links page-bg-color page-b-radius center-text-items h-40 mv-10">link1</li>
-                                <li class="links page-bg-color page-b-radius center-text-items h-40 mv-10">link2</li>
+                                {% for linkitem in linkdata %}
+                                    <li class="links page-bg-color page-b-radius flex items-center justify-center center-text-items h-40 mv-10"><a
+                                            class="flex items-center justify-center center-text-items" href="{{linkitem[4]}}">{{linkitem[3]}}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                         <div class="flex">
@@ -79,22 +81,23 @@
                         </div>
                         <div class="userpage-settings items-center justify-center w-100p">
                             <div class="setting-new-link">
-                                <form id="form-new-link" action="">
+                                <form id="form-new-link" method="post" action="">
+                                    <input type="hidden" name="page-setting" value="link">
                                     <div class="pv-16">
                                         <label for="description">Description</label>
                                         <div class="p-16">
-                                             <input id="description" type="text" class="inputtext inputboxes w-100p">
+                                             <input id="description" name="description" type="text" class="inputtext inputboxes w-100p">
                                         </div>
                                     </div>
                                      <div class="pv-16">
                                         <label for="url">URL</label>
                                          <div class="p-16 mt-5">
-                                             <input id="url" type="text" class="inputtext inputboxes w-100p">
+                                             <input id="url" name="link" type="text" class="inputtext inputboxes w-100p">
                                          </div>
                                     </div>
                                     <div class="pv-16 flex items-center gap-5">
                                         <div class="">
-                                            <button type="button" class="sendbutton">Save</button>
+                                            <button id="sendLink" type="button" class="sendbutton">Save</button>
                                         </div>
                                         <div class="">
                                             <div class="cancel-button">Cancel</div>
@@ -104,7 +107,8 @@
                             </div>
                             <div class="setting-userpage">
                                 <form id="form-userpage" method="post" action="">
-                                    <input type="hidden" name="page-settings" value="bgcolor-borderradius">
+                                    <input type="hidden" name="page-setting" value="bgcolor-borderradius">
+                                    <input type="hidden" name="page-setting" value="bgcolor-borderradius">
                                     <div class="border-radius-setting pv-16">
                                         <div>
                                             <h2>

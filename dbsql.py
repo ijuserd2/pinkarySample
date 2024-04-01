@@ -43,9 +43,20 @@ def set_test_user_pagesettings(bgcolor, borderradius):
     set_sql = "UPDATE UserPageSettings SET BgColor = '" + bgcolor + "', BorderRadius = '" + borderradius + "' WHERE UserId = 11"
     cursor.execute(set_sql)
     cursor.commit()
+def fetch_test_links():
+    fetch_sql = "SELECT * FROM ProjectDB.dbo.Links WHERE UserId = 11"
+    cursor.execute(fetch_sql)
+    db_link_data = cursor.fetchall()
+    return db_link_data
 
+def set_test_links(desc, link):
+    set_sql = "INSERT INTO Links(UserId, Description, Link, DataCreated, DataModified) VALUES (11, '"+desc+"', '"+link+"', GETDATE(), GETDATE())"
+    cursor.execute(set_sql)
+    cursor.commit()
+
+#set_test_links("descr3","www.tumblr.com")
 #fetch_test_user_pagesettings()
-set_test_user_pagesettings("to right,red,blue","0")
+#set_test_user_pagesettings("to right,red,blue","0")
 #fetch_test_user_pagesettings()
 #sign_up('john','doe','johndoe2@email.com','2468john')
 #print_users()
