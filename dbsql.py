@@ -45,7 +45,7 @@ def set_test_user_pagesettings(bgcolor, borderradius):
     cursor.commit()
 
 #fetch_test_user_pagesettings()
-#set_test_user_pagesettings("red","50px")
+set_test_user_pagesettings("to right,red,blue","0")
 #fetch_test_user_pagesettings()
 #sign_up('john','doe','johndoe2@email.com','2468john')
 #print_users()

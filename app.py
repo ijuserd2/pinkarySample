@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for
 import dbsql
+import page_settings
 
 app = Flask(__name__)
 
@@ -47,6 +48,13 @@ def user():
         return render_template('user.html', bgcolor = settingsvalues[0], borderradius = settingsvalues[1])
     if request.method == "POST":
         if (request.form["page-settings"] == "bgcolor-borderradius"):
+            border_radius = request.form.get("border-radius-rate")
+            bg_color = request.form.get("bg-color-set")
+            values = page_settings.check(bg_color, border_radius)
+            dbsql.set_test_user_pagesettings(values[0], values[1])
+            print(values[0],values[1])
+            settingsvalues = dbsql.fetch_test_user_pagesettings()
+            return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1])
 
         settingsvalues = dbsql.fetch_test_user_pagesettings()
         return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1])
