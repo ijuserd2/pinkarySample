@@ -73,6 +73,11 @@ def fetch_test_user_pagesettings(userid):
     db_border_radius = cursor.fetchone()[0]
     return [db_bgcolor, db_border_radius]
 
+def update_test_user_pagesettings(bgcolor, borderradius, userid):
+    set_sql = "UPDATE UserPageSettings SET BgColor = '" + bgcolor + "', BorderRadius = '" + borderradius + "' WHERE UserId = '"+userid+"'"
+    cursor.execute(set_sql)
+    cursor.commit()
+
 def set_test_user_pagesettings(bgcolor, borderradius, userid):
     set_sql = "INSERT INTO UserPageSettings(UserId, BgColor, BorderRadius, DataCreated, DataModified) VALUES ('"+userid+"', '"+bgcolor+"', '"+borderradius+"', GETDATE(), GETDATE())"
     cursor.execute(set_sql)

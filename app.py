@@ -38,39 +38,41 @@ def u(username):
     userid = dbsql.fetch_user_id_by_username(username)
     userid = str(userid)
     check_username = dbsql.fetch_user_by_username(username)
-    if(check_username!=None):
-            is_user_page = False
-            linkdata = dbsql.fetch_test_links(userid)
-            settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
+    is_user_page = False
+    if request.method == 'GET':
+        if(check_username!=None):
+                linkdata = dbsql.fetch_test_links(userid)
+                settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
+                if 'username' in session:
+                    if username == session['username']:
+                        is_user_page = True
+                return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
+                                       linkdata=linkdata, is_user_page = is_user_page)
+    if request.method == 'POST':
+        if(check_username!=None):
             if 'username' in session:
                 if username == session['username']:
                     is_user_page = True
-            return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
-                                   linkdata=linkdata, is_user_page = is_user_page)
-    if request.method == 'POST':
-        if 'username' in session:
-            if username == session['username']:
-                is_user_page = True
-                if (request.form["page-setting"] == "bgcolor-borderradius"):
-                    border_radius = request.form.get("border-radius-rate")
-                    bg_color = request.form.get("bg-color-set")
-                    values = page_settings.check(bg_color, border_radius)
-                    dbsql.set_test_user_pagesettings(values[0], values[1], session['userid'])
+                    if (request.form["page-setting"] == "bgcolor-borderradius"):
+                        border_radius = request.form.get("border-radius-rate")
+                        bg_color = request.form.get("bg-color-set")
+                        values = page_settings.check(bg_color, border_radius)
+                        dbsql.update_test_user_pagesettings(values[0], values[1], userid)
 
-                    linkdata = dbsql.fetch_test_links(userid)
-                    settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
-                    return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
-                                           linkdata=linkdata, is_user_page=is_user_page)
+                        linkdata = dbsql.fetch_test_links(userid)
+                        settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
+                        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
+                                               linkdata=linkdata, is_user_page=is_user_page)
 
-                if (request.form["page-setting"] == "link"):
-                    description = request.form.get("description")
-                    link = request.form.get("link")
-                    dbsql.set_test_links(description, link, session['userid'])
+                    if (request.form["page-setting"] == "link"):
+                        description = request.form.get("description")
+                        link = request.form.get("link")
+                        dbsql.set_test_links(description, link, userid)
 
-                    linkdata = dbsql.fetch_test_links(userid)
-                    settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
-                    return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
-                                           linkdata=linkdata, is_user_page=is_user_page)
+                        linkdata = dbsql.fetch_test_links(userid)
+                        settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
+                        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
+                                               linkdata=linkdata, is_user_page=is_user_page)
 
     return redirect(url_for('home'))
 
