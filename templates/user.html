@@ -73,114 +73,116 @@
                                 {% endfor %}
                             </ul>
                         </div>
+                        {% if is_user_page %}
                         <div class="flex">
                             <div class="link-settings-wrapper mv-25 h-40 w-100p flex items-center justify-center">
                                 <div class="setting-1 page-bg-color page-b-radius center-text-items flex w-100p">Add New Link</div>
                                 <div class="setting-2 page-bg-color page-b-radius center-text-items flex w-100p"> Setting</div>
                             </div>
                         </div>
-                        <div class="userpage-settings items-center justify-center w-100p">
-                            <div class="setting-new-link">
-                                <form id="form-new-link" method="post" action="">
-                                    <input type="hidden" name="page-setting" value="link">
-                                    <div class="pv-16">
-                                        <label for="description">Description</label>
-                                        <div class="p-16">
-                                             <input id="description" name="description" type="text" class="inputtext inputboxes w-100p">
+                            <div class="userpage-settings items-center justify-center w-100p">
+                                <div class="setting-new-link">
+                                    <form id="form-new-link" method="post" action="">
+                                        <input type="hidden" name="page-setting" value="link">
+                                        <div class="pv-16">
+                                            <label for="description">Description</label>
+                                            <div class="p-16">
+                                                 <input id="description" name="description" type="text" class="inputtext inputboxes w-100p">
+                                            </div>
                                         </div>
-                                    </div>
-                                     <div class="pv-16">
-                                        <label for="url">URL</label>
-                                         <div class="p-16 mt-5">
-                                             <input id="url" name="link" type="text" class="inputtext inputboxes w-100p">
-                                         </div>
-                                    </div>
-                                    <div class="pv-16 flex items-center gap-5">
-                                        <div class="">
-                                            <button id="sendLink" type="button" class="sendbutton">Save</button>
+                                         <div class="pv-16">
+                                            <label for="url">URL</label>
+                                             <div class="p-16 mt-5">
+                                                 <input id="url" name="link" type="text" class="inputtext inputboxes w-100p">
+                                             </div>
                                         </div>
-                                        <div class="">
-                                            <div class="cancel-button">Cancel</div>
+                                        <div class="pv-16 flex items-center gap-5">
+                                            <div class="">
+                                                <button id="sendLink" type="button" class="sendbutton">Save</button>
+                                            </div>
+                                            <div class="">
+                                                <div class="cancel-button">Cancel</div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+                                <div class="setting-userpage">
+                                    <form id="form-userpage" method="post" action="">
+                                        <input type="hidden" name="page-setting" value="bgcolor-borderradius">
+                                        <input type="hidden" name="page-setting" value="bgcolor-borderradius">
+                                        <div class="border-radius-setting pv-16">
+                                            <div>
+                                                <h2>
+                                                    Link Shape
+                                                </h2>
+                                                <span>
+                                                    In what shape do you want to present your links?
+                                                </span>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="square" name="border-radius-rate" value="Square">
+                                                <label for="square" class="class-square settings-userpage page-bg-color center-text-items flex w-100p">Square</label>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="round" name="border-radius-rate" value="Round">
+                                                <label for="round" class="class-round settings-userpage page-bg-color center-text-items flex w-100p">Round</label>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="extra-round" name="border-radius-rate" value="Extra Round">
+                                                <label for="extra-round" class="class-extra-round settings-userpage page-bg-color center-text-items flex w-100p">Extra Round</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="bg-color-setting pv-16">
+                                            <div>
+                                                <h2>
+                                                    Link Color
+                                                </h2>
+                                                <span>
+                                                    What color are you choosing for your links?
+                                                </span>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="b-r-s-1" name="bg-color-set" value="b-r-s-1">
+                                                <label class="class-b-s-r-1 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-1">b-r-s-1</label>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="b-r-s-2" name="bg-color-set" value="b-r-s-2">
+                                                <label class="class-b-s-r-2 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-2">b-r-s-2</label>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="b-r-s-3" name="bg-color-set" value="b-r-s-3">
+                                                <label class="class-b-s-r-3 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-3">b-r-s-3</label>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="b-r-s-4" name="bg-color-set" value="b-r-s-4">
+                                                <label class="class-b-s-r-4 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-4">b-r-s-4</label>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="b-r-s-5" name="bg-color-set" value="b-r-s-5">
+                                                <label class="class-b-s-r-5 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-5">b-r-s-5</label>
+                                            </div>
+                                            <div class="pv-16 h-40 flex w-100p items-center justify-center">
+                                                <input class="inputradio flex w-100p" type="radio" id="b-r-s-6" name="bg-color-set" value="b-r-s-6">
+                                                <label class="class-b-s-r-6 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-6">b-r-s-6</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="pv-16 flex items-center gap-5">
+                                            <div class="">
+                                                <button type="submit" class="sendbutton">Save</button>
+                                            </div>
+                                            <div class="">
+                                                <div class="cancel-button">Cancel</div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
                             </div>
-                            <div class="setting-userpage">
-                                <form id="form-userpage" method="post" action="">
-                                    <input type="hidden" name="page-setting" value="bgcolor-borderradius">
-                                    <input type="hidden" name="page-setting" value="bgcolor-borderradius">
-                                    <div class="border-radius-setting pv-16">
-                                        <div>
-                                            <h2>
-                                                Link Shape
-                                            </h2>
-                                            <span>
-                                                In what shape do you want to present your links?
-                                            </span>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="square" name="border-radius-rate" value="Square">
-                                            <label for="square" class="class-square settings-userpage page-bg-color center-text-items flex w-100p">Square</label>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="round" name="border-radius-rate" value="Round">
-                                            <label for="round" class="class-round settings-userpage page-bg-color center-text-items flex w-100p">Round</label>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="extra-round" name="border-radius-rate" value="Extra Round">
-                                            <label for="extra-round" class="class-extra-round settings-userpage page-bg-color center-text-items flex w-100p">Extra Round</label>
-                                        </div>
-
-                                    </div>
-                                    <div class="bg-color-setting pv-16">
-                                        <div>
-                                            <h2>
-                                                Link Color
-                                            </h2>
-                                            <span>
-                                                What color are you choosing for your links?
-                                            </span>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="b-r-s-1" name="bg-color-set" value="b-r-s-1">
-                                            <label class="class-b-s-r-1 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-1">b-r-s-1</label>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="b-r-s-2" name="bg-color-set" value="b-r-s-2">
-                                            <label class="class-b-s-r-2 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-2">b-r-s-2</label>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="b-r-s-3" name="bg-color-set" value="b-r-s-3">
-                                            <label class="class-b-s-r-3 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-3">b-r-s-3</label>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="b-r-s-4" name="bg-color-set" value="b-r-s-4">
-                                            <label class="class-b-s-r-4 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-4">b-r-s-4</label>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="b-r-s-5" name="bg-color-set" value="b-r-s-5">
-                                            <label class="class-b-s-r-5 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-5">b-r-s-5</label>
-                                        </div>
-                                        <div class="pv-16 h-40 flex w-100p items-center justify-center">
-                                            <input class="inputradio flex w-100p" type="radio" id="b-r-s-6" name="bg-color-set" value="b-r-s-6">
-                                            <label class="class-b-s-r-6 settings-userpage page-b-radius center-text-items flex w-100p" for="b-r-s-6">b-r-s-6</label>
-                                        </div>
-
-                                    </div>
-                                    <div class="pv-16 flex items-center gap-5">
-                                        <div class="">
-                                            <button type="submit" class="sendbutton">Save</button>
-                                        </div>
-                                        <div class="">
-                                            <div class="cancel-button">Cancel</div>
-                                        </div>
-                                    </div>
-
-                                </form>
-
-                            </div>
-
-                        </div>
+                        {% endif %}
                     </div>
 
                 </div>
