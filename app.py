@@ -93,34 +93,10 @@ def register():
 
 @app.route('/user/', methods=['GET','POST'])
 def user():
-    if request.method == "GET":
-        linkdata = dbsql.fetch_test_links()
-        settingsvalues = dbsql.fetch_test_user_pagesettings()
-        return render_template('user.html', bgcolor = settingsvalues[0], borderradius = settingsvalues[1], linkdata = linkdata)
-    if request.method == "POST":
-        if (request.form["page-setting"] == "bgcolor-borderradius"):
-            border_radius = request.form.get("border-radius-rate")
-            bg_color = request.form.get("bg-color-set")
-            values = page_settings.check(bg_color, border_radius)
-            dbsql.set_test_user_pagesettings(values[0], values[1])
-
-            linkdata = dbsql.fetch_test_links()
-            settingsvalues = dbsql.fetch_test_user_pagesettings()
-            return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1], linkdata = linkdata)
-
-        if (request.form["page-setting"] == "link"):
-            description = request.form.get("description")
-            link = request.form.get("link")
-            dbsql.set_test_links(description, link)
-
-            linkdata = dbsql.fetch_test_links()
-            settingsvalues = dbsql.fetch_test_user_pagesettings()
-            return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1], linkdata = linkdata)
-
-        linkdata = dbsql.fetch_test_links()
-        settingsvalues = dbsql.fetch_test_user_pagesettings()
-        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1], linkdata = linkdata)
-
+    if 'username' in session:
+        username = session['username']
+        return redirect(url_for('u',  username=username))
+    redirect(url_for('home'))
 @app.route('/logout/', methods=['GET','POST'])
 def logout():
     session.pop('email', None)
