@@ -19,31 +19,54 @@
     <div id="wrapper" class="flex flex-d-column min-h-s">
         <div class="contenttop">
             <header>
+                {% if 'username' not in session %}
                     <div class="hd-properties flex flex-d-column items-end">
-                        <div class="flex hd-inside">
-                            <div class="bar other-bars">
-                                <a href="{{ url_for('home')}}">
-                                    <i class="fa-solid fa-house"></i>
-                                </a>
-                            </div>
-                            <div class="bar other-bars">
-                                <a href="{{ url_for('user')}}">
-                                    <i class="fa-solid fa-user"></i>
-                                </a>
-                            </div>
-                            <div class="bar navbar">
-                                <i class="fas fa-bars"></i>
+                            <div class="hd-inside">
+                                <div class="bar navbar">
+                                    <i class="fas fa-bars"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="navbar-box">
+                        <div>
+                            <div class="navbar-box">
                                 <div class="navbar-box-items">
-                                    <a href="{{ url_for('profile')}}">Settings</a>
+                                    <a href="{{ url_for('index')}}">About</a>
                                 </div>
                                 <div class="navbar-box-items">
-                                    <a href="{{ url_for('login')}}">Log Out</a>
+                                    <a href="{{ url_for('login')}}">Log In</a>
                                 </div>
+                                <div class="navbar-box-items">
+                                    <a href="{{ url_for('register')}}">Sign Up</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% else %}
+                        <div class="hd-properties flex flex-d-column items-end">
+                            <div class="flex hd-inside">
+                                <div class="bar other-bars">
+                                    <a href="{{ url_for('home')}}">
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </div>
+                                <div class="bar other-bars">
+                                    <a href="{{ url_for('user')}}">
+                                        <i class="fa-solid fa-user"></i>
+                                    </a>
+                                </div>
+                                <div class="bar navbar">
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                            </div>
+                            <div class="navbar-box">
+                                    <div class="navbar-box-items">
+                                        <a href="{{ url_for('profile')}}">Settings</a>
+                                    </div>
+                                    <div class="navbar-box-items">
+                                        <a href="{{ url_for('logout')}}">Log Out</a>
+                                    </div>
+                            </div>
+                        </div>
+                {% endif %}
             </header>
             <main>
                 <div class="main-properties flex flex-d-column items-center justify-center">
@@ -56,7 +79,7 @@
                                {{name}}
                            </div>
                            <div class="mv-5">
-                               <a href="">{{uname}}</a>
+                               <a class="usernamecolor" href="">@{{uname}}</a>
                            </div>
                            <div class="mv-5">
                                {{bio}}
@@ -69,7 +92,15 @@
                             <ul>
                                 {% for linkitem in linkdata %}
                                     <li class="links page-bg-color page-b-radius flex items-center justify-center center-text-items h-40 mv-10"><a
-                                            class="flex items-center justify-center center-text-items" href="{{linkitem[4]}}">{{linkitem[3]}}</a></li>
+                                            class="flex items-center justify-center center-text-items" href="{{linkitem[4]}}">{{linkitem[3]}}</a>
+                                        {% if is_user_page %}
+                                            <form class="deletelink" method="post">
+                                                <input type="hidden" name="page-setting" value="deletelink">
+                                                <input type="hidden" name="linkdesc" value="{{linkitem[3]}}">
+                                                <button class="deletelink center-text-items flex w-100p" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                            </form>
+                                        {% endif %}
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -101,7 +132,7 @@
                                                 <button id="sendLink" type="button" class="sendbutton">Save</button>
                                             </div>
                                             <div class="">
-                                                <div class="cancel-button">Cancel</div>
+                                                <div class="cancel-button" onclick="hideLinkSetting();">Cancel</div>
                                             </div>
                                         </div>
                                     </form>
@@ -173,7 +204,7 @@
                                                 <button type="submit" class="sendbutton">Save</button>
                                             </div>
                                             <div class="">
-                                                <div class="cancel-button">Cancel</div>
+                                                <div class="cancel-button" onclick="hideUserPageSetting();">Cancel</div>
                                             </div>
                                         </div>
 
@@ -190,18 +221,13 @@
         </div>
         <footer>
                 <div class="ft-properties flex items-center justify-center">
-                    <div class="mh-5"><a href="">Terms</a></div>
-                    <div class="mh-5"><a href="">Privacy Policy</a></div>
-                    <div class="mh-5"><a href="">Support</a></div>
-                    <div class="mh-5"><a href="">Backlog</a></div>
-                    <div class="mh-5"><a href="">Status</a></div>
-                    <div class="mh-5"><span>@2024 Pinkary</span></div>
-
+                  <div class="mh-5"><span>@2024 LinkApp</span></div>
                 </div>
         </footer>
-
     </div>
-
+    {% if is_user_page %}
     <script src="{{ url_for('static',filename='scriptuser.js')}}"></script>
+    {% endif %}
+    <script src="{{ url_for('static',filename='scripthome.js')}}"></script>
 </body>
 </html>

@@ -1,5 +1,3 @@
-const navbar = document.getElementsByClassName("navbar")[0];
-const navbarBox = document.getElementsByClassName("navbar-box")[0];
 const addLinkButton = document.getElementsByClassName("setting-1")[0];
 const addLink = document.getElementsByClassName("setting-new-link")[0];
 const userPageSettingButton = document.getElementsByClassName("setting-2")[0];
@@ -8,6 +6,7 @@ const linkForm = document.getElementById("form-new-link");
 const descriptionInput = document.getElementById("description");
 const linkInput = document.getElementById("url");
 const sendLink = document.getElementById("sendLink");
+const cancelbutton = document.getElementsByClassName("cancel-button");
 
 const validRegex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?\/?$/gm;
 var isLinkFormValid = false, isSettingFormValid = false;
@@ -37,13 +36,13 @@ linkInput.addEventListener("blur", function () {
   }
 });
 
-navbar.addEventListener("click",function(){
-    if(navbarBox.style.display=="block"){
-        navbarBox.style.display="none";
-    }else{
-        navbarBox.style.display="block";
-    }
-});
+
+function hideUserPageSetting(){
+    userPageSetting.style.display="none";
+}
+function hideLinkSetting(){
+    addLink.style.display="none";
+}
 
 userPageSettingButton.addEventListener("click",function(){
     if(addLink.style.display=="block"){

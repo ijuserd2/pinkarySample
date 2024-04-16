@@ -11,6 +11,28 @@
         <div id="wrapper" class="flex flex-d-column min-h-s font">
             <div class="contenttop">
                 <header>
+                        {% if 'username' not in session %}
+                    <div class="hd-properties flex flex-d-column items-end">
+                            <div class="hd-inside">
+                                <div class="bar navbar">
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="navbar-box">
+                                <div class="navbar-box-items">
+                                    <a href="{{ url_for('index')}}">About</a>
+                                </div>
+                                <div class="navbar-box-items">
+                                    <a href="{{ url_for('login')}}">Log In</a>
+                                </div>
+                                <div class="navbar-box-items">
+                                    <a href="{{ url_for('register')}}">Sign Up</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
                         <div class="hd-properties flex flex-d-column items-end">
                             <div class="flex hd-inside">
                                 <div class="bar other-bars">
@@ -32,29 +54,32 @@
                                         <a href="{{ url_for('profile')}}">Settings</a>
                                     </div>
                                     <div class="navbar-box-items">
-                                        <a href="{{ url_for('login')}}">Log Out</a>
+                                        <a href="{{ url_for('logout')}}">Log Out</a>
                                     </div>
                             </div>
                         </div>
+                {% endif %}
                 </header>
                 <main>
                     <div class="flex flex-d-column items-center justify-center light-gray-color">
                         <h1>
-                            MAIN PAGE
+                            LinkApp
                         </h1>
+                    </div>
+                    <div class="flex flex-d-column items-center justify-center light-gray-color">
+                        <div class="mv-10 mh-5 pv-16">
+                            <p>
+                            LinkApp is a web application similar to Linktree. It creates a landing page that houses all the important links that you want to share with your audience.
+                            </p>
+                        </div>
+
                     </div>
                 </main>
             </div>
             <footer>
-                    <div class="ft-properties flex items-center justify-center">
-                        <div class="mh-5"><a href="">Terms</a></div>
-                        <div class="mh-5"><a href="">Privacy Policy</a></div>
-                        <div class="mh-5"><a href="">Support</a></div>
-                        <div class="mh-5"><a href="">Backlog</a></div>
-                        <div class="mh-5"><a href="">Status</a></div>
-                        <div class="mh-5"><span>@2024 Pinkary</span></div>
-
-                    </div>
+                <div class="ft-properties flex items-center justify-center">
+                  <div class="mh-5"><span>@2024 LinkApp</span></div>
+                </div>
             </footer>
         </div>
         <script src="{{ url_for('static',filename='scriptindex.js')}}"></script>

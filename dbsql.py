@@ -36,7 +36,6 @@ def fetch_username_by_email(email):
     fetch_username_sql = "SELECT UserName FROM Users WHERE Email = '"+email+"'"
     cursor.execute(fetch_username_sql)
     dbuname = cursor.fetchone()[0]
-    print(dbuname)
     return dbuname
 def fetch_user_id(email):
     fetch_user_id_sql = "SELECT UserId FROM Users WHERE Email = '"+email+"'"
@@ -103,9 +102,30 @@ def fetch_links_by_username(username):
     db_link_data = cursor.fetchall()
     return db_link_data
 
+def fetch_fullname_by_username(username):
+    fetch_sql = "SELECT FullName FROM Users WHERE UserName = '"+username+"'"
+    cursor.execute(fetch_sql)
+    fullname = cursor.fetchone()[0]
+    return fullname
+def fetch_datecreated_by_username(username):
+    fetch_sql = "SELECT DataCreated FROM Users WHERE UserName = '"+username+"'"
+    cursor.execute(fetch_sql)
+    date = cursor.fetchone()[0]
+    return date
+def fetch_bio_by_username(username):
+    fetch_sql = "SELECT Bio FROM Users WHERE UserName = '" + username + "'"
+    cursor.execute(fetch_sql)
+    bio = cursor.fetchone()[0]
+    return bio
+
 def set_test_links(desc, link, userid):
     set_sql = "INSERT INTO Links(UserId, Description, Link, DataCreated, DataModified) VALUES ('"+userid+"', '"+desc+"', '"+link+"', GETDATE(), GETDATE())"
     cursor.execute(set_sql)
+    cursor.commit()
+
+def delete_link(desc, userid):
+    delete_sql = "DELETE FROM Links WHERE UserId = '"+userid+"' AND Description = '"+desc+"' "
+    cursor.execute(delete_sql)
     cursor.commit()
 
 def update_test_user_acc(name, username, email, bio, userid):

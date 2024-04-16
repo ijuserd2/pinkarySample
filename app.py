@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import dbsql
 import page_settings
+import dateutil.parser as dparser
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
@@ -12,8 +13,10 @@ def index():
 
 @app.route('/home/', methods=['GET','POST'])
 def home():
-    if 'email' in session:
-        return render_template('home.html', email=session['email'])
+    if 'username' in session:
+        uname = session['username']
+        fullname = dbsql.fetch_fullname_by_username(uname)
+        return render_template('home.html', fullname=fullname)
     return redirect(url_for('login'))
 @app.route('/login/', methods=['GET','POST'])
 def login():
@@ -36,6 +39,12 @@ def login():
 def u(username):
 
     userid = dbsql.fetch_user_id_by_username(username)
+    fullname = dbsql.fetch_fullname_by_username(username)
+    bio = dbsql.fetch_bio_by_username(username)
+    datecreated = dbsql.fetch_datecreated_by_username(username)
+    datecreated = str(datecreated)
+    joined_date = "{}".format(dparser.parse(datecreated, fuzzy=True).date())
+
     userid = str(userid)
     check_username = dbsql.fetch_user_by_username(username)
     is_user_page = False
@@ -46,13 +55,21 @@ def u(username):
                 if 'username' in session:
                     if username == session['username']:
                         is_user_page = True
-                return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
+                return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1], name = fullname, uname = username, bio = bio, joined_date = joined_date,
                                        linkdata=linkdata, is_user_page = is_user_page)
     if request.method == 'POST':
         if(check_username!=None):
             if 'username' in session:
                 if username == session['username']:
                     is_user_page = True
+                    if (request.form["page-setting"] == "deletelink"):
+                        desc = request.form.get("linkdesc")
+                        dbsql.delete_link(desc, userid)
+                        linkdata = dbsql.fetch_test_links(userid)
+                        settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
+                        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1], name = fullname, uname = username, bio = bio, joined_date = joined_date,
+                                               linkdata=linkdata, is_user_page=is_user_page)
+
                     if (request.form["page-setting"] == "bgcolor-borderradius"):
                         border_radius = request.form.get("border-radius-rate")
                         bg_color = request.form.get("bg-color-set")
@@ -61,17 +78,18 @@ def u(username):
 
                         linkdata = dbsql.fetch_test_links(userid)
                         settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
-                        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
+                        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1], name = fullname, uname = username, bio = bio, joined_date = joined_date,
                                                linkdata=linkdata, is_user_page=is_user_page)
 
                     if (request.form["page-setting"] == "link"):
                         description = request.form.get("description")
                         link = request.form.get("link")
-                        dbsql.set_test_links(description, link, userid)
+                        link2 = "https://"+link+""
+                        dbsql.set_test_links(description, link2, userid)
 
                         linkdata = dbsql.fetch_test_links(userid)
                         settingsvalues = dbsql.fetch_test_user_pagesettings(userid)
-                        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1],
+                        return render_template('user.html', bgcolor=settingsvalues[0], borderradius=settingsvalues[1], name = fullname, uname = username, bio = bio, joined_date = joined_date,
                                                linkdata=linkdata, is_user_page=is_user_page)
 
     return redirect(url_for('home'))

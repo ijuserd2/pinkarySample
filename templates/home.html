@@ -32,7 +32,7 @@
                                     <a href="{{ url_for('profile')}}">Settings</a>
                                 </div>
                                 <div class="navbar-box-items">
-                                    <a href="{{ url_for('login')}}">Log Out</a>
+                                    <a href="{{ url_for('logout')}}">Log Out</a>
                                 </div>
                         </div>
                     </div>
@@ -43,22 +43,22 @@
                         HOME PAGE
                     </h1>
                 </div>
-                <div>
-                    <h2 style="color:white;">{{hello_user}}</h2>
+                <div class="flex flex-d-column items-center justify-center light-gray-color">
+                        <div class="mv-10 mh-5 pv-16">
+                            <p>
+                                Welcome, {{fullname}}
+                            </p>
+                        </div>
+
                 </div>
             </main>
         </div>
         <footer>
                 <div class="ft-properties flex items-center justify-center">
-                    <div class="mh-5"><a href="">Terms</a></div>
-                    <div class="mh-5"><a href="">Privacy Policy</a></div>
-                    <div class="mh-5"><a href="">Support</a></div>
-                    <div class="mh-5"><a href="">Backlog</a></div>
-                    <div class="mh-5"><a href="">Status</a></div>
-                    <div class="mh-5"><span>@2024 Pinkary</span></div>
-
+                  <div class="mh-5"><span>@2024 LinkApp</span></div>
                 </div>
         </footer>
+
     </div>
 
     <script src="{{ url_for('static',filename='scripthome.js')}}"></script>
